@@ -1,0 +1,27 @@
+.switch {
+  width: 48px;
+  height: 20px;
+  border-radius: 25px;
+  background-color: #ccc;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.switch.on {
+  background-color: rgb(134, 211, 255);
+  justify-content: flex-end;
+}
+
+.toggle-handle {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(38, 147, 230);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
