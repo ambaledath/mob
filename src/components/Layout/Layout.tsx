@@ -1,12 +1,10 @@
 import ScrollView from "devextreme-react/scroll-view";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { Header } from "../../components";
-import type { SideNavToolbarProps } from "../../types";
+import { Outlet } from "react-router-dom";
 import "./layout.scss";
 
-export default function Layout({
-  children,
-}: React.PropsWithChildren<SideNavToolbarProps>) {
+export default function Layout() {
   const scrollViewRef = useRef<ScrollView>(null);
 
   return (
@@ -15,10 +13,7 @@ export default function Layout({
       <div className={"container"}>
         <ScrollView ref={scrollViewRef} className={"layout-body with-footer"}>
           <div className={"content"}>
-            {React.Children.map(
-              children as React.ReactElement[],
-              (item, index) => React.cloneElement(item, { key: index })
-            )}
+            <Outlet />
           </div>
         </ScrollView>
       </div>
