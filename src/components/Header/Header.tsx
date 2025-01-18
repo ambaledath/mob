@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Tabs from "devextreme-react/tabs";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { SelectionChangedEvent } from "devextreme/ui/tabs";
 import "./Header.scss";
 
@@ -47,7 +47,13 @@ export default function Header() {
   );
 
   return (
-    <header  className={"header-component"}>
+    <header className={"header-component"}>
+      <nav>
+        <Link to="/">Page 1</Link>
+        <Link to="/page2">Page 2</Link>
+        <Link to="/page3">Page 3</Link>
+      </nav>
+      {/* 
       <Tabs
         id="specialist-nav-menu"
         width={"100%"}
@@ -59,6 +65,7 @@ export default function Header() {
         selectedIndex={selectedTab}
         onSelectionChanged={onNavigationChanged}
       />
+      */}
     </header>
   );
 }
