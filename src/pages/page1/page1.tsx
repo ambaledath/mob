@@ -15,15 +15,11 @@ export default function Page1() {
 
   return (
     <div className="page1">
-      <Toolbar style={{ marginTop: "3px" }}>
-        <Item location="before" locateInMenu="never" text={"toggle"} />
-        <Item location="after">
-          <Switch
-            value={showIncomplete}
-            onValueChanged={showIncompleteValueChange}
-          />
-        </Item>
-      </Toolbar>
+      <Switch
+        value={showIncomplete}
+        onValueChanged={showIncompleteValueChange}
+      />
+
       <div>page 1</div>
     </div>
   );

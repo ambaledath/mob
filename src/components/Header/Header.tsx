@@ -54,11 +54,6 @@ export default function Header() {
 
   return (
     <header className={"header-component"}>
-      {/* <nav>
-        <Link to="/">Page 1</Link>
-        <Link to="/page2">Page 2</Link>
-        <Link to="/page3">Page 3</Link>
-      </nav>*/}
       <Tabs
         dataSource={tabsIconAndText}
         onSelectionChanged={onNavigationChanged}
