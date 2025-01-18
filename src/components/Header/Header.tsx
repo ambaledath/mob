@@ -30,42 +30,40 @@ export default function Header() {
   const location = useLocation();
 
   const currentPath = location.pathname;
-  const [selectedTab, setSelectedTab] = useState<number>(0);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const matchingTab = tabsIconAndText.find((tab) =>
       tab.path.includes(currentPath)
     )?.id;
     setSelectedTab(matchingTab ?? 0);
-  }, [currentPath]);
+  }, [currentPath]);*/
+
+  const [selectedTab, setSelectedTab] = useState(tabsIconAndText[0]);
 
   const onNavigationChanged = useCallback(
-    (args: SelectionChangedEvent) => {
-      navigate(args.addedItems[0]?.path ?? "");
+    (args) => {
+      setSelectedTab(args.selectedItem || args.addedItems[0]);
     },
-    [navigate]
+    [selectedTab]
   );
+
+  useEffect(() => {
+    console.log(selectedTab);
+    navigate(selectedTab?.path);
+  }, [selectedTab]);
 
   return (
     <header className={"header-component"}>
-      <nav>
+      {/* <nav>
         <Link to="/">Page 1</Link>
         <Link to="/page2">Page 2</Link>
         <Link to="/page3">Page 3</Link>
-      </nav>
-      {/* 
+      </nav>*/}
       <Tabs
-        id="specialist-nav-menu"
-        width={"100%"}
-        defaultSelectedIndex={0}
         dataSource={tabsIconAndText}
-        orientation={"horizontal"}
-        iconPosition={"top"}
-        stylingMode={"secondary"}
-        selectedIndex={selectedTab}
         onSelectionChanged={onNavigationChanged}
+        selectedItem={selectedTab}
       />
-      */}
     </header>
   );
 }
