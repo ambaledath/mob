@@ -9,7 +9,6 @@ export default function Layout() {
 
   return (
     <div className={"side-nav-outer-toolbar"}>
-      {<Header />}
       <div className={"container"}>
         <ScrollView ref={scrollViewRef} className={"layout-body with-footer"}>
           <div className={"content"}>
@@ -17,6 +16,7 @@ export default function Layout() {
           </div>
         </ScrollView>
       </div>
+      <Header />
     </div>
   );
 }
