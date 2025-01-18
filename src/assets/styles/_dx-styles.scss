@@ -1,0 +1,367 @@
+@import "./variables";
+
+body {
+  font-family: var(--base-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  background-color: darken($base-bg, 5.00);
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  .content {
+    line-height: 1.5;
+    flex-grow: 1;
+    margin: calc(2%);
+    background-color: #F0F0F0;
+
+    h2 {
+      font-size: 30px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .container {
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    background-color: #F5F5F5;
+  }
+
+  .layout-body {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .content-block {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+  }
+
+  .section-title {
+    font-size: large;
+  }
+
+  .section-toolbar {
+    padding: 0 16px;
+  }
+
+  .dx-overlay-content {
+    top: 100px !important;
+  }
+
+  .dx-datagrid-header-panel {
+    padding: 0;
+    margin-bottom: 5px;
+
+    .dx-datagrid-search-panel {
+      border-style: solid;
+      border-width: thin;
+      border-color: rgba(0, 0, 0, .25);
+      background-color: #fff;
+      border-radius: 3px;
+    }
+
+    .dx-toolbar-after {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .dx-datagrid-search-panel {
+    margin: 0;
+  }
+
+  .dx-datagrid {
+    padding: 0 16px;
+
+    .dx-datagrid-headers {
+      background-color: rgba(0, 0, 0, .04);
+
+      .dx-datagrid-text-content {
+        font-weight: bolder;
+        color: black;
+      }
+    }
+  }
+
+  .dx-tagbox.dx-state-disabled {
+    background-color: #fff;
+    opacity: 1;
+
+    .dx-tag-remove-button {
+      display: none;
+    }
+
+    .dx-tag-content {
+      cursor: default;
+      background-color: #fff;
+      border-radius: 3px;
+      border-style: solid;
+      border-width: thin;
+      border-color: rgba(0, 0, 0, .25);
+      color: rgba(0, 0, 0, .87);
+
+    }
+
+    .dx-placeholder {
+      display: none;
+    }
+
+  }
+
+  .dx-texteditor.dx-editor-filled::after {
+    border-bottom: none;
+  }
+
+}
+
+.confirmation-popover {
+  padding: 5px;
+
+}
+
+.disable-confirmation {
+  color: #FAAD14;
+  font-size: 24px;
+}
+
+.side-nav-outer-toolbar .dx-drawer {
+  height: calc(100% - 56px)
+}
+
+.screen-x-small .content-block {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.responsive-paddings {
+  padding: 20px;
+
+  .screen-large & {
+    padding: 40px;
+  }
+}
+
+.dx-card.wide-card {
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+.with-footer>.dx-scrollable-wrapper>.dx-scrollable-container>.dx-scrollable-content {
+  height: 100%;
+
+  &>.dx-scrollview-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+}
+
+html,
+body {
+  margin: 0px;
+  min-height: 100%;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.dx-toast-content {
+  height: 20vh !important;
+  width: 60vw !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.dx-toast-info {
+  background-color: rgba(0, 0, 0, .87);
+}
+
+.dx-toast-warning {
+  background-color: #ffc107;
+}
+
+.dx-toast-error {
+  background-color: #f44336;
+}
+
+.dx-toast-success {
+  background-color: #000000B2;
+}
+
+.toaster-flex-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: large;
+}
+
+.toaster-icon {
+  font-size: 24px;
+}
+
+.toaster-message {
+  margin-top: 10px;
+}
+
+.toaster-close-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+
+
+.dx-loadindicator-segment-inner {
+  border-color: #00B578 #00B578 transparent;
+}
+
+.dx-field-item-label-location-top {
+  display: block;
+  padding: 0px;
+  margin-bottom: 10px;
+  -webkit-padding-start: 0px;
+  padding-inline-start: 0px;
+  -webkit-padding-end: 0px;
+  padding-inline-end: 0px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.dx-button-mode-outlined.dx-state-selected {
+  background-color: #fff;
+  border-color: #03a9f4;
+  color: #03a9f4;
+}
+
+.toaster-close-icon-style {
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+}
+
+.inactive-row {
+  td:not(.actions-column) {
+    opacity: 0.4;
+  }
+}
+
+.dx-datagrid-group-closed:before {
+  content: normal;
+}
+
+.dx-datagrid-group-opened:before {
+  content: normal;
+}
+
+.dx-icon-login {
+  transform: scaleX(-1);
+}
+
+.step-form {
+  height: 98vh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #fff;
+  .dx-tab.dx-tab-selected {
+    color: #00B578;
+  }
+
+  .dx-tabs-styling-mode-secondary.dx-tab-indicator-position-bottom .dx-tab.dx-tab-selected .dx-tab-content::after {
+    background-color: #00B578;
+  }
+  .dx-tabs-styling-mode-primary.dx-tab-indicator-position-bottom .dx-tab-selected::after{
+    background-color: #00B578;
+  }
+}
+.form-header{
+  border-bottom: 1px solid #ccc; /* Color can be changed as needed */
+  margin-bottom: 10px;
+}
+.form-buttons {
+  margin-top: auto;
+  /* Push the toolbar to the bottom */
+  display: flex;
+
+  /* Ensure flex layout */
+  .dx-button-mode-contained {
+    background-color: #00B578;
+  }
+
+  .dx-button-mode-outlined {
+    color: rgba(0, 0, 0, .54);
+    border: 1px solid;
+  }
+
+  .dx-button {
+    width: 163px;
+  }
+}
+
+.confirmation-dialog {
+  .dx-button-mode-contained {
+    background-color: #00B578 !important;
+    width: 163px;
+  }
+
+  .dx-button-mode-outlined {
+    color: rgba(0, 0, 0, .54) !important;
+    border: 1px solid !important;
+    width: 163px;
+  }
+}
+
+.dx-button-mode-contained {
+  background-color: #00B578 !important;
+}
+
+.dx-button-mode-outlined {
+  color: rgba(0, 0, 0, .54) !important;
+  border: 1px solid !important;
+}
+.list-with-center-allignment {
+
+    .dx-list-item-content {
+      justify-content: center !important;
+      /* Center align the list items */
+      display: flex !important;
+      /* Ensure the items are flex items so justify-content applies */
+    }
+  
+}
+.list-picker-button {
+  .dx-button-mode-text {
+    color: #00B578 !important;
+  }
+
+}
+
+.list-picker-title {
+  .dx-button-mode-text {
+    pointer-events: none;
+    color: black !important;
+  }
+}
