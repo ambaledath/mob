@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Tabs from "devextreme-react/tabs";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { SelectionChangedEvent } from "devextreme/ui/tabs";
 import "./Header.scss";
 
@@ -8,19 +8,16 @@ const tabsIconAndText = [
   {
     id: 0,
     text: "Page 1",
-    icon: "like",
     path: "/page1",
   },
   {
     id: 1,
     text: "Page 2",
-    icon: "taskcomplete",
     path: "/page2",
   },
   {
     id: 2,
     text: "Page 3",
-    icon: "taskstop",
     path: "/page3",
   },
 ];
@@ -30,34 +27,32 @@ export default function Header() {
   const location = useLocation();
 
   const currentPath = location.pathname;
-
-  /*useEffect(() => {
-    const matchingTab = tabsIconAndText.find((tab) =>
-      tab.path.includes(currentPath)
-    )?.id;
-    setSelectedTab(matchingTab ?? 0);
-  }, [currentPath]);*/
-
-  const [selectedTab, setSelectedTab] = useState(tabsIconAndText[0]);
-
-  const onNavigationChanged = useCallback(
-    (args) => {
-      setSelectedTab(args.selectedItem || args.addedItems[0]);
-    },
-    [selectedTab]
+  const [selectedTab, setSelectedTab] = useState(
+    tabsIconAndText.findIndex((tab) => tab.path === currentPath)
   );
 
   useEffect(() => {
-    console.log(selectedTab);
-    navigate(selectedTab?.path);
-  }, [selectedTab]);
+    const tabIndex = tabsIconAndText.findIndex(
+      (tab) => tab.path === currentPath
+    );
+    setSelectedTab(tabIndex);
+  }, [currentPath]);
+
+  const onNavigationChanged = useCallback(
+    (args: SelectionChangedEvent) => {
+      navigate(args.addedItems[0]?.path ?? "");
+    },
+    [navigate]
+  );
 
   return (
     <header className={"header-component"}>
       <Tabs
         dataSource={tabsIconAndText}
+        orientation={"horizontal"}
+        stylingMode={"secondary"}
+        selectedIndex={selectedTab}
         onSelectionChanged={onNavigationChanged}
-        selectedItem={selectedTab}
       />
     </header>
   );
