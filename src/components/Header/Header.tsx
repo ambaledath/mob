@@ -27,7 +27,6 @@ export default function Header() {
   const location = useLocation();
   console.log("location.pathname : ", location.pathname);
   const [selectedTab, setSelectedTab] = useState(tabsIconAndText[0]);
-  const [tabIndex, setTabIndex] = useState(tabsIconAndText[0].id);
 
   const onNavigationChanged = useCallback(
     (args) => {
@@ -40,12 +39,7 @@ export default function Header() {
     []
   );
 
-  useEffect(() => {
-    const matchingTabIndex = tabsIconAndText.find((tab) =>
-      tab.path.includes(location.pathname)
-    )?.id;
-    setTabIndex(matchingTabIndex ?? 0);
-  }, [location.pathname]);
+
 
   useEffect(() => {
     const path = localStorage.getItem("path");
@@ -59,7 +53,6 @@ export default function Header() {
         dataSource={tabsIconAndText}
         stylingMode={"secondary"}
         onSelectionChanged={onNavigationChanged}
-        selectedIndex={tabIndex}
       />
     </header>
   );
