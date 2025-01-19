@@ -29,27 +29,20 @@ export default function Header() {
   const [selectedTab, setSelectedTab] = useState(tabsIconAndText[0]);
   const [tabIndex, setTabIndex] = useState(tabsIconAndText[0].id);
 
-  const onNavigationChanged = useCallback(
-    (args) => {
-      const tabObj = args.selectedItem || args.addedItems[0];
-      setSelectedTab(args.selectedItem || args.addedItems[0]);
-      console.log("path 1 ", tabObj.path);
-      localStorage.setItem("path", tabObj.path);
-      navigate(tabObj.path);
-    },
-    []
-  );
-
-  useEffect(() => {
-    const matchingTabIndex = tabsIconAndText.find((tab) =>
-      tab.path.includes(location.pathname)
-    )?.id;
-    setTabIndex(matchingTabIndex || 0);
-  }, [navigate]);
+  const onNavigationChanged = useCallback((args) => {
+    const tabObj = args.selectedItem || args.addedItems[0];
+    setSelectedTab(args.selectedItem || args.addedItems[0]);
+    setTabIndex(tabObj.id);
+    localStorage.setItem("path", tabObj.path);
+    localStorage.setItem("tabindex", tabObj.id);
+    navigate(tabObj.path);
+  }, []);
 
   useEffect(() => {
     const path = localStorage.getItem("path");
-    console.log("path 2 : ", path);
+    const tabindex = localStorage.getItem("tabindex");
+    console.log("tabindex : ", tabindex);
+    console.log("path : ", path);
     navigate(path);
   }, [navigate, selectedTab]);
 
