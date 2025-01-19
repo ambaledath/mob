@@ -25,20 +25,31 @@ const tabsIconAndText = [
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const currentPath = location.pathname;
-
+  console.log("location.pathname : ", location.pathname);
   const [selectedTab, setSelectedTab] = useState(tabsIconAndText[0]);
+  const [tabIndex, setTabIndex] = useState(tabsIconAndText[0].id);
 
-  const onNavigationChanged = useCallback((args) => {
-    const tabObj = args.selectedItem || args.addedItems[0];
-    console.log("tabObj: ", tabObj.path);
-    localStorage.setItem("path", tabObj.path);
-    setSelectedTab(args.selectedItem || args.addedItems[0]);
-  }, []);
+  const onNavigationChanged = useCallback(
+    (args) => {
+      const tabObj = args.selectedItem || args.addedItems[0];
+      setSelectedTab(args.selectedItem || args.addedItems[0]);
+      console.log("path 1 ", tabObj.path);
+      localStorage.setItem("path", tabObj.path);
+      navigate(tabObj.path);
+    },
+    []
+  );
+
+  useEffect(() => {
+    const matchingTabIndex = tabsIconAndText.find((tab) =>
+      tab.path.includes(location.pathname)
+    )?.id;
+    setTabIndex(matchingTabIndex ?? 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const path = localStorage.getItem("path");
-    console.log("path : ", path);
+    console.log("path 2 : ", path);
     navigate(path);
   }, [navigate, selectedTab]);
 
@@ -46,9 +57,9 @@ export default function Header() {
     <header className={"header-component"}>
       <Tabs
         dataSource={tabsIconAndText}
-        orientation={"horizontal"}
         stylingMode={"secondary"}
         onSelectionChanged={onNavigationChanged}
+        selectedIndex={tabIndex}
       />
     </header>
   );
