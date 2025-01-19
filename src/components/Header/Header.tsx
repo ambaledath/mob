@@ -52,6 +52,7 @@ export default function Header() {
         dataSource={tabsIconAndText}
         stylingMode={"secondary"}
         onSelectionChanged={onNavigationChanged}
+        selectedIndex={1}
       />
     </header>
   );
